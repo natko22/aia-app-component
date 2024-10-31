@@ -1,6 +1,7 @@
 <template>
-  <div class="flex justify-center items-center mb-3">
-    <span class="w-32 text-sm font-semibold text-gray-700">{{ skill }}:</span>
+  <div>
+    <span>{{ skill }}:</span>
+
     <div class="flex items-center space-x-2">
       <template v-for="i in maxValue" :key="i">
         <svg
@@ -14,6 +15,20 @@
           <circle cx="12" cy="12" r="10" />
         </svg>
       </template>
+    </div>
+    <div class="flex items-center">
+      <input
+        type="number"
+        v-model="currentRating"
+        @input="updateRating"
+        :min="0"
+        :max="maxValue"
+        class="input-badge text-center"
+        placeholder="Type score"
+      />
+      <button @click="resetRating" class="reset-btn cursor-pointer">
+        Reset
+      </button>
     </div>
   </div>
 </template>
@@ -31,8 +46,20 @@ const emit = defineEmits(["update"]);
 const currentRating = ref(props.defaultValue);
 
 function setRating(value: number) {
-  // Toggle to 0 if the same rating is clicked
   currentRating.value = currentRating.value === value ? 0 : value;
+  emit("update", currentRating.value);
+}
+
+function updateRating() {
+  if (currentRating.value < 0) currentRating.value = 0;
+  if (currentRating.value > props.maxValue)
+    currentRating.value = props.maxValue;
+  emit("update", currentRating.value);
+}
+
+// Function to reset rating
+function resetRating() {
+  currentRating.value = 0;
   emit("update", currentRating.value);
 }
 </script>
@@ -51,7 +78,32 @@ function setRating(value: number) {
   width: 2rem;
   height: 2rem;
 }
-
+.input-badge {
+  width: 5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 0.5rem 0.5rem;
+  color: #6a9c78;
+  background-color: #f0f4f3;
+  outline: none;
+  transition: box-shadow 0.2s ease;
+}
+.input-badge:focus {
+  box-shadow: 0 0 0 2px #6a9c78;
+}
+.reset-btn {
+  width: 6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 0.5rem 0.5rem;
+  color: #6a9c78;
+  background-color: #f0f4f3;
+  outline: none;
+  margin-left: 1rem;
+}
+.reset-btn:hover {
+  box-shadow: 0 0 0 2px #6a9c78;
+}
 svg:hover {
   transition: color 0.3s ease;
   color: #5a8d6b;
