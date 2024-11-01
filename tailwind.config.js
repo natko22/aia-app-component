@@ -1,16 +1,18 @@
-/** @type {import('tailwindcss').Config} */
-export default {
+// tailwind.config.js
+module.exports = {
   content: [
     "./components/**/*.{vue,js,ts}",
-    "./layouts/**/*.vue",
     "./pages/**/*.vue",
-    "./plugins/**/*.{js,ts}",
+    "./layouts/**/*.vue",
+    "./app.vue",
     "./nuxt.config.{js,ts}",
+    "./styles/**/*.css",
   ],
   theme: {
     extend: {
       colors: {
         primary: "#6a9c78",
+        borderColor: "#1a260d",
       },
     },
   },

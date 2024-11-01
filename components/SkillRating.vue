@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span>{{ skill }}:</span>
+    <span>{{ skill }}</span>
 
     <div class="flex items-center space-x-2">
       <template v-for="i in maxValue" :key="i" @click="setRating(i)">
