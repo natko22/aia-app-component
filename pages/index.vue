@@ -7,7 +7,6 @@
 <script setup>
 import SkillCard from "../components/SkillCard.vue";
 import skills from "../data/skills.js";
-import "../taillwind.css";
 </script>
 
 <style scoped>
