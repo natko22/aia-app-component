@@ -110,7 +110,7 @@ export default [
   {
     name: "Attention to Detail",
     maxValue: 3,
-    defaultValue: 2,
+    defaultValue: 3,
     comments: [
       "Consistently attentive to detail",
       "Occasionally overlooks small details",

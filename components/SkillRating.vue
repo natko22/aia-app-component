@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span>{{ skill }}</span>
+    <!-- <span>{{ skill }}</span> -->
 
     <div class="flex items-center space-x-2">
       <template v-for="i in maxValue" :key="i" @click="setRating(i)">
@@ -29,7 +29,9 @@ const props = defineProps<{
   defaultValue: number;
 }>();
 
-const emit = defineEmits(["update"]);
+const emit = defineEmits<{
+  (e: "update", value: number): void;
+}>();
 const currentRating = ref(props.defaultValue);
 
 function setRating(value: number) {
