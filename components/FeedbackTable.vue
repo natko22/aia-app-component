@@ -1,70 +1,79 @@
 <template>
-  <div
-    class="mt-8 mb-10 border border-borderColor rounded-lg overflow-hidden bg-[ #f4f8f2]"
-  >
-    <table class="min-w-full divide-y divide-borderColor">
-      <thead class="bg-gray-50">
-        <tr>
-          <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">
-            Skill
-          </th>
-          <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">
-            Rating
-          </th>
-          <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">
-            Comments
-          </th>
-          <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">
-            Include
-          </th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-gray-200 bg-white">
-        <tr v-for="skill in skills" :key="skill.name">
-          <td class="px-6 py-4 text-sm font-medium text-gray-900">
-            {{ skill.name }}
-          </td>
-          <td class="px-6 py-4">
-            <SkillRating
-              :maxValue="skill.maxValue"
-              :defaultValue="skill.defaultValue"
-            />
-          </td>
-
-          <td class="px-6 py-8">
-            <select
-              v-model="skill.selectedComment"
-              class="form-select w-full border border-gray-300 rounded-md py-2"
+  <Table class="w-full table-fixed">
+    <TableHead>
+      <TableRow>
+        <TableCell
+          class="flex-1 text-center text-sm font-extrabold text-neutral-500 dark:text-neutral-400"
+        >
+          Skill
+        </TableCell>
+        <TableCell
+          class="flex-1 text-center text-sm font-extrabold text-neutral-500 dark:text-neutral-400"
+        >
+          Rating
+        </TableCell>
+        <TableCell
+          class="flex-1 text-center text-sm font-extrabold text-neutral-500 dark:text-neutral-400"
+        >
+          Comments
+        </TableCell>
+        <TableCell
+          class="flex-1 text-center text-sm font-extrabold text-neutral-500 dark:text-neutral-400"
+        >
+          Include
+        </TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow v-for="skill in skills" :key="skill.name">
+        <TableCell class="px-8 py-4 text-sm font-medium text-gray-900">
+          {{ skill.name }}
+        </TableCell>
+        <TableCell class="px-8 py-4">
+          <SkillRating
+            :skill="skill.name"
+            :maxValue="skill.maxValue"
+            :defaultValue="skill.defaultValue"
+          />
+        </TableCell>
+        <TableCell class="px-8 py-4">
+          <select
+            v-model="skill.selectedComment"
+            class="form-select w-full border border-gray-300 rounded-md py-2"
+          >
+            <option disabled value="">Select Feedback</option>
+            <option
+              v-for="comment in skill.comments"
+              :key="comment"
+              :value="comment"
             >
-              <option disabled value="">Select Feedback</option>
-              <option
-                v-for="comment in skill.comments"
-                :key="comment"
-                :value="comment"
-              >
-                {{ comment }}
-              </option>
-            </select>
-          </td>
-          <td class="px-6 py-4">
-            <input
-              type="checkbox"
-              v-model="skill.includeComment"
-              class="form-checkbox h-5 w-5 text-grey-600"
-            />
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+              {{ comment }}
+            </option>
+          </select>
+        </TableCell>
+        <TableCell class="px-8 py-4">
+          <input
+            type="checkbox"
+            v-model="skill.includeComment"
+            class="form-checkbox h-5 w-5 text-gray-600"
+          />
+        </TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
-import SkillRating from "../components/SkillRating.vue";
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@/components/ui/table";
+import SkillRating from "./SkillRating.vue";
 import skillsData from "../data/skills";
 
 const skills = ref(skillsData);
 </script>
-
-<style scoped></style>
