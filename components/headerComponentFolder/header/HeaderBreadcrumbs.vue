@@ -1,5 +1,5 @@
 <template>
-  <Breadcrumb class="flex justify-center">
+  <Breadcrumb>
     <BreadcrumbList>
       <template v-for="(item, index) in breadcrumbs" :key="index">
         <BreadcrumbItem>
