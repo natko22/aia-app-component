@@ -1,21 +1,32 @@
 export const breadcrumbItems = [
-  { label: "Home", link: "/" },
+  { label: "Startseite", link: "/" },
   { label: "Feedback", link: "/feedback" },
-  { label: "Ratings", link: "/ratings" },
+  { label: "Bewertungen", link: "/ratings" },
 ];
 
 export const tabItems = [
   {
-    label: "Overview",
-    content: "This is the overview section content.",
+    label: "Übersicht",
+    content: "Dies ist der Inhalt des Übersicht-Bereichs.",
   },
   {
     label: "Details",
-    content: "This is the details section content.",
+    content: "Dies ist der Inhalt des Detail-Bereichs.",
   },
 ];
 
 export const actionItems = [
-  { label: "Edit", onClick: () => console.log("Edit clicked") },
-  { label: "Delete", onClick: () => console.log("Delete clicked") },
+  { label: "Bearbeiten", onClick: () => console.log("Bearbeiten geklickt") },
+  { label: "Löschen", onClick: () => console.log("Löschen geklickt") },
 ];
+
+export const infoSectionData = {
+  title: "Schreibe eine Gedichtsinterpretation",
+  descriptions: ["Klasse 8a", "Deutsch"],
+  date: new Date().toLocaleDateString("de-DE", {
+    weekday: "long",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  }),
+};

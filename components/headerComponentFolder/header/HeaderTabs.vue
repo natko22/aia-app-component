@@ -1,5 +1,5 @@
 <template>
-  <div class="flex space-x-4 justify-end mt-4 mr-4">
+  <div class="flex space-x-4 justify-end mt-1 mr-4">
     <Tabs>
       <TabsList class="flex space-x-1">
         <TabsTrigger
@@ -19,7 +19,7 @@
   </div>
 
   <div
-    class="w-full max-w-4xl mx-auto mt-12 p-8 h-auto bg-white rounded-md shadow-md border to-black"
+    class="w-full max-w-4xl mx-auto mt-8 p-8 h-auto bg-white rounded-md shadow-md border to-black"
   >
     <div class="text-gray-800 text-base flex justify-center items-center">
       {{ activeTabContent }}

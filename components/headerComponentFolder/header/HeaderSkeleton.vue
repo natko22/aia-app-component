@@ -4,10 +4,23 @@
       <div class="flex justify-center">
         <HeaderBreadcrumbs :breadcrumbs="breadcrumbs" />
       </div>
+      <!-- Header Info Section -->
+      <div class="flex-1">
+        <h2 class="text-xl font-semibold">{{ title }}</h2>
+        <div class="mt-2 text-gray-600 space-y-1">
+          <p v-for="(description, index) in descriptions" :key="index">
+            {{ description }}
+          </p>
+          <p class="font-semibold text-gray-800">{{ date }}</p>
+        </div>
+      </div>
       <div><HeaderActions :actions="actions" /></div>
     </div>
     <div>
       <HeaderTabs :tabs="tabs" />
+    </div>
+    <div class="flex-1">
+      <slot name="info"></slot>
     </div>
   </section>
 </template>
@@ -31,6 +44,21 @@ export default {
       type: Array,
       required: false,
       default: () => [],
+    },
+    title: {
+      type: String,
+      required: true,
+      default: "Default Title",
+    },
+    descriptions: {
+      type: Array,
+      required: true,
+      default: () => ["Default Description"],
+    },
+    date: {
+      type: String,
+      required: true,
+      default: "No Date Provided",
     },
   },
   components: {
