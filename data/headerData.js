@@ -14,3 +14,8 @@ export const tabItems = [
     content: "This is the details section content.",
   },
 ];
+
+export const actionItems = [
+  { label: "Edit", onClick: () => console.log("Edit clicked") },
+  { label: "Delete", onClick: () => console.log("Delete clicked") },
+];
